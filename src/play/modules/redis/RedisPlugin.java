@@ -40,6 +40,7 @@ public class RedisPlugin extends PlayPlugin {
                 this.isFlushAtApplicationExit = Boolean.valueOf(
                         Play.configuration.getProperty("redis.cache.flush", "false"));
                 Logger.info("Connecting to redis cache with %s", redisCacheUrl);
+                Logger.info("Exit Application Flash Redis: %s", isFlushAtApplicationExit);
                 RedisConnectionInfo redisConnInfo = new RedisConnectionInfo(redisCacheUrl,
                         Play.configuration.getProperty("redis.cache.timeout"));
 

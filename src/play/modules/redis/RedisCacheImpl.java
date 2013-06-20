@@ -1,5 +1,6 @@
 package play.modules.redis;
 
+import play.Logger;
 import play.Play;
 import play.cache.CacheImpl;
 import play.libs.Time;
@@ -236,6 +237,7 @@ public class RedisCacheImpl implements CacheImpl {
     public void stop() {
         RedisPlugin plugin = (RedisPlugin) Play.pluginCollection.getPluginInstance(RedisPlugin.class);
         if(plugin.isFlushAtApplicationExit()) {
+            Logger.info("Flash redis %s.", Play.configuration.getProperty("redis.cache.url"));
             getCacheConnection().flushAll();
         }
         connectionPool.destroy();
